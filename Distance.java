@@ -29,6 +29,7 @@ public class Distance {
         //In case the user doesn't chose a file
         if (result != JFileChooser.APPROVE_OPTION)
             System.exit(0);
+        //Temp println to see if I can read the file
         System.out.println(file.nextLine());
 
         /*while (file.hasNext()) {
