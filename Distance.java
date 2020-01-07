@@ -24,27 +24,30 @@ public class Distance {
         String currentFolder = System.getProperty("user.dir");
         JFileChooser fc = new JFileChooser(currentFolder);
         int result = fc.showOpenDialog(null);
+
         //Attach a scanner to the file
         Scanner file = new Scanner(fc.getSelectedFile());
+
         //In case the user doesn't chose a file
         if (result != JFileChooser.APPROVE_OPTION)
             System.exit(0);
-        //Temp println to see if I can read the file
-        System.out.println(file.nextLine());
 
-        /*while (file.hasNext()) {
-            for (numCities = 0; file.hasNext(); numCities++) {
-                city[numCities] = file.next();
-                String[] row = file.nextLine().split(" ");
-                for (int i = 1; i < row.length; i++) {
-                    distance [1][i] = Integer.parseInt(row[i]);
-                }
+
+        for (numCities = 0; file.hasNext(); numCities++) {
+            city[numCities] = file.nextLine();
+            String row[] = file.nextLine().split(" ");
+            for (int i = 0; i < row.length; i++) {
+                distance[numCities][i] = Integer.parseInt(row[i]);
             }
-            for (int i = 0; i<city.length; i++) {
-                for (int j = 1; j<distance[i].length; j++)
-                    System.out.print(distance[i][j] + " ");
-                System.out.println();
-            }
+        }
+        /*for (String town: city) {
+            System.out.println(town);
         }*/
+        for (int i = 0; i<city.length; i++) {
+            System.out.print(city[i] + ": ");
+            for (int j = 0; j<distance[i].length; j++)
+                System.out.print(distance[i][j] + " ");
+            System.out.println();
+        }
     }
 }
